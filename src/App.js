@@ -1,23 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import { Container } from "react-bootstrap";
+import NavBar from "./components/NavBar";
+import MoviesList from "./components/MoviesList";
+import axios from "axios";
+import { useEffect, useState } from "react";
+
+
+
+
 
 function App() {
+  const [movies, setmovies] = useState([]);
+  const getAllMovies = async () => {
+    const res = await axios.get("https://api.themoviedb.org/3/movie/popular?api_key=355f3cc55c1a5f8fb6f7b79d7541faea&language=ar")
+    setmovies(res.data.results)
+  
+  }
+
+  useEffect(()=> {
+getAllMovies();
+
+  }, [])
+
+  const search = async (word) => {
+    if(word === "")
+    {
+    getAllMovies();
+    } else {
+      const res = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=355f3cc55c1a5f8fb6f7b79d7541faea&query=${word}&language=ar`);
+      setmovies(res.data.results)
+    }
+  
+    
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="font color-body">
+<NavBar search={search}/>
+         <Container>
+         <MoviesList movies={movies}/>
+
+         </Container>
     </div>
   );
 }
