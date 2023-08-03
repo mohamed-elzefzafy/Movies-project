@@ -1,9 +1,6 @@
 import { Col, Container, Row } from "react-bootstrap";
 import logo from '../images/logo.png'
-import { useState } from "react";
 const NavBar = ({search}) => {
-
-  // const [searchWord, setsearchWord] = useState("");
 const onSearch = (word) => {
   search(word);
 }
@@ -13,9 +10,10 @@ const onSearch = (word) => {
     <Container>
       <Row className="pt-2 ">
         <Col xs="2" lg="1">
-
-            <img className="logo" src={logo} alt="dfs" />
-
+              <a href="/">
+        
+            <img  className="logo" src={logo} alt="dfs" />
+            </a>  
         </Col>
         <Col xs="10" lg="11" className=" d-flex align-items-center">
           <div className="search  w-100">

@@ -2,13 +2,14 @@
 import ReactPaginate from "react-paginate";
 
 
-const PaginationComp = () => {
+const PaginationComp = ({pageCount ,  getPage}) => {
 
-  const handlePageClick = (data)=> {
+  const handlePageClick =async (data)=> {
 console.log(data.selected + 1);
+getPage(data.selected + 1)
   }
 
-  const pageCount = 500;
+
   return (
 
     <ReactPaginate
