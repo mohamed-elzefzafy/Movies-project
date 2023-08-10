@@ -1,14 +1,22 @@
 
+import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
+import { useDispatch, useSelector } from "react-redux";
+import {  getPage } from "../redux/actions/movieAction";
 
+const PaginationComp = () => {
+  const [pageCount, setPageCount] = useState(0);
+  const dispatch = useDispatch();
 
-const PaginationComp = ({pageCount ,  getPage}) => {
+  const pages = useSelector((state) => state.pageCount);
 
-  const handlePageClick =async (data)=> {
-console.log(data.selected + 1);
-getPage(data.selected + 1)
+  useEffect(()=> {
+setPageCount(pages)
+      }, [])    
+      
+  const handlePageClick =  (data)=> {
+dispatch(getPage(data.selected + 1))
   }
-
 
   return (
 

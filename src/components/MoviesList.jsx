@@ -9,9 +9,7 @@ import { useState } from "react";
 
 const MoviesList = () => {
   const [movies, setmovies] = useState([]);
-  const [pageCount, setPageCount] = useState(0);
   
-
   const dispatch = useDispatch();
 
 
@@ -34,7 +32,7 @@ const MoviesList = () => {
       <CardMovie key={mov.id} mov={mov}/>
     )) : (<h2 className="text-center p-5">لا يوجد أفلام</h2>)}
 
-{movies.length > 0 && <PaginationComp pageCount={pageCount}  getPage={pageCount}/> }
+{movies.length > 0 && <PaginationComp/> }
     </Row>
   )
 }
