@@ -2,7 +2,7 @@ import { Row } from "react-bootstrap";
 import CardMovie from "./CardMovie";
 import PaginationComp from "./PaginationComp";
 import { useEffect } from "react";
-import { getAllMovie } from "./redux/actions/movieAction";
+import { getAllMovie } from "../redux/actions/movieAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 

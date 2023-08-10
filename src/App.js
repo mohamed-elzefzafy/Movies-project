@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MovieDetails from "./components/MovieDetails";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllMovie } from "./components/redux/actions/movieAction";
+import { getAllMovie } from "./redux/actions/movieAction";
 
 
 
